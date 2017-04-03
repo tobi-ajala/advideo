@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+<body>
+
+<div class="vidBox" id="contain">
+
+  <video id="video1" class="vid" muted controls="true" height="300" width="500" autoplay>
+    <source src="http://clips.vorwaerts-gmbh.de/VfE.ogv" type="video/mp4">
+  </video>
+
+  <video id="video2" class="vid2" autoplay muted controls="true" style="display:none;" height="300" width="500">
+    <source src="http://cdn.http.anno.test.channel4.com/m/1/174055/7/2047111/MUM-HATD170-020_1462888808_93626_17.mp4" type="video/mp4">
+  </video>
+
+  <video id="video3" class="vid3" autoplay muted controls="true" style="display:none;" height="300" width="500">
+    <source src="http://cdn.http.anno.test.channel4.com/m/1/174055/77/1340109/CH4_31_02_50_AMV_SYPR030_030_001_93613_17.mp4" type="video/mp4">
+  </video>
+
+</div>
+
+
+<script type="text/javascript">
+var vid = document.getElementById('video1');
+vid.addEventListener("ended", hideVideo, false);
+
+function hideVideo(event) {
+    console.log("hideVideo");
+    var vid = document.getElementById('video1');
+    vid.pause();
+    vid.style.display='none';
+    vid.removeEventListener("ended", hideVideo, false);
+
+    var vid2 = document.getElementById('video2');
+    vid2.style.display='block';
+    vid2.addEventListener("ended", hideVideo2, false);
+}
+
+function hideVideo2(event) {
+    console.log("hideVideo2");
+    var vid2 = document.getElementById('video2');
+    vid2.style.display='none';
+
+    var vid = document.getElementById('video1');
+    vid.style.display='block';
+    vid.play();
+}
+
+// start timer in milliseconds
+setTimeout( hideVideo, 10000);
+
+</script>
+
+</body>
+</html>
