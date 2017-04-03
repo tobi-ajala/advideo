@@ -36,6 +36,7 @@ function hideVideo(event) {
     var vid2 = document.getElementById('video2');
     vid2.style.display='block';
     vid2.addEventListener("ended", hideVideo2, false);
+    vid2.load();
 }
 
 function hideVideo2(event) {
